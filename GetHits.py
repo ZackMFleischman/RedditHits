@@ -9,14 +9,14 @@ from operator import attrgetter
 from SubredditHits import getHits 
 import datetime
 
-def getAllHits(subreddits):
-    address="zFleischman@gmail.com"
+def getAllHits(subreddits, toAddress):
+    address=toAddress
 
 # Create message container - the correct MIME type is multipart/alternative.
     today = datetime.date.today()
     msg = MIMEMultipart('alternative')
     msg['Subject'] = "Reddit Hits of the Day - " + str(today)
-    msg['From'] = address
+    msg['From'] = "RedditAggregator@Zack.com"
     msg['To'] = address
 
     html =  """\
