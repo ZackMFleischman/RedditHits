@@ -32,7 +32,10 @@ def getHits(r, subreddit_name, score_threshold=100):
 
     recordedSubs = sorted(recordedSubs, key=attrgetter('score'), reverse=True)
     for sub in recordedSubs:
-        html += "<li><b>[" + str(sub.score) + "] </b> <a href=\"" + sub.short_link + "\">[Comments]</a> | <a href=\"" + sub.url + "\">" + sub.title + "</a></li>\n"
+        nsfw = ""
+        if (sub.over_18):
+            nsfw = "(NSFW)"
+        html += "<li><b>[" + str(sub.score) + "] </b>" + nsfw + " <a href=\"" + sub.short_link + "\">[Comments]</a> | <a href=\"" + sub.url + "\">" + sub.title + "</a></li>\n"
     html +="</ol><br>"
     if len(hitSubs) == 0:
         return ""
