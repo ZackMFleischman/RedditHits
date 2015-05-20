@@ -1,7 +1,6 @@
 from GetHits import getAllHits
 
-#toAddress = "minghuig@gmail.com"
-toAddress = "zfleischman@gmail.com"
+toAddress = "minghuig@gmail.com"
 subreddits = [
 ("AnimalPorn",100),
 ("AnimalsBeingBros",100),
