@@ -44,7 +44,10 @@ def getAllHits(subreddits, toAddress):
     html += "</ol></body></html>\n"
 
     text = "plain text"
-    html = unicodedata.normalize('NFKD', html).encode('ascii','ignore')
+    try:
+        html = unicodedata.normalize('NFKD', html).encode('ascii','ignore')
+    except:
+        pass
 # Record the MIME types of both parts - text/plain and text/html.
     part1 = MIMEText(text, 'plain')
     part2 = MIMEText(html, 'html')
