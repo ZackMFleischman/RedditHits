@@ -1,4 +1,4 @@
-from GetHits import getAllHits
+from lib.GetHits import getAllHits
 
 toAddress = "minghuig@gmail.com"
 subreddits = [
