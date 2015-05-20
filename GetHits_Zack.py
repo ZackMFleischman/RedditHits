@@ -4,6 +4,7 @@ toAddress = "zFleischman@gmail.com"
 subreddits = [
 "woahdude",
 "worldnews",
+"programmerhumor",
 "iama",
 "personalfinance",
 "animalsbeingjerks",
