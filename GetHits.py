@@ -8,6 +8,9 @@ from email.mime.text import MIMEText
 from operator import attrgetter
 from SubredditHits import getHits 
 import datetime
+import sys
+
+sys.dont_write_bytecode = True
 
 def getAllHits(subreddits, toAddress):
     address=toAddress
