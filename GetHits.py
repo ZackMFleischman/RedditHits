@@ -1,5 +1,6 @@
 #!/usr/bin/python
 import smtplib
+import cred
 import praw
 import unicodedata
 from pprint import pprint
@@ -35,9 +36,9 @@ def getAllHits(subreddits, toAddress):
     print ("") 
 
     progress = 1
-    for (sub, score) in subreddits:
+    for sub in subreddits:
         print ("Getting /r/" + sub + "...(" + str(progress) + "/" + str(len(subreddits))+")")
-        html += getHits(r, sub, score)
+        html += getHits(r, sub)
         progress += 1
 
 
@@ -61,7 +62,7 @@ def getAllHits(subreddits, toAddress):
     s = smtplib.SMTP_SSL('smtp.gmail.com', 465, timeout=10)
 
     try:
-        s.login("zFleischman@gmail.com", "PurpleSheepW4ll")
+        s.login(cred.username(), cred.password())
         s.sendmail(address, address, msg.as_string())
     finally:
         s.quit()

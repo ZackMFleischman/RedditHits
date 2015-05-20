@@ -1,6 +1,6 @@
 from GetHits import getAllHits
 
 toAddress = "zFleischman@gmail.com"
-subreddits = [("woahdude",100)]
+subreddits = ["woahdude"]
 
 getAllHits(subreddits, toAddress)

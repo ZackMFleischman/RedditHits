@@ -12,23 +12,26 @@ def getHits(r, subreddit_name, score_threshold=100):
     now = time.time()
     nowDate = datetime.datetime.fromtimestamp(now)
     
-    allHot = subreddit.get_hot(limit=300)
     topScore = 0
-    for sub in allHot:
-        if sub.score > topScore:
-            topScore = sub.score
     
-    score_threshold = int(topScore * 0.1)
-    html = "<h3>/r/" + subreddit_name + " hits of the day. (Greater than "+str(score_threshold)+" karma)</h3><ol>"
 
     for sub in subreddit.get_hot(limit=300): 
+        if (sub.score > topScore):
+            topScore = sub.score
         postedDate = datetime.datetime.fromtimestamp(sub.created_utc)
         delta = nowDate - postedDate
-        if (sub.score > score_threshold and delta.days == 0):
+        if (delta.days == 0):
             hitSubs.append(sub)
+    score_threshold = int(topScore * 0.1)
+    recordedSubs = []
+    for dayOldSub in hitSubs:
+        if (dayOldSub.score > score_threshold):
+            recordedSubs.append(dayOldSub)
 
-    hitSubs = sorted(hitSubs, key=attrgetter('score'), reverse=True)
-    for sub in hitSubs:
+    html = "<h3>/r/" + subreddit_name + " hits of the day. (Greater than "+str(score_threshold)+" karma)</h3><ol>"
+
+    recordedSubs = sorted(recordedSubs, key=attrgetter('score'), reverse=True)
+    for sub in recordedSubs:
         html += "<li><b>[" + str(sub.score) + "] </b> <a href=\"" + sub.short_link + "\">[Comments]</a> | <a href=\"" + sub.url + "\">" + sub.title + "</a></li>\n"
     html +="</ol><br>"
     if len(hitSubs) == 0:
