@@ -20,7 +20,7 @@ def getHits(r, subreddit_name, score_threshold=100):
 
     hitSubs = sorted(hitSubs, key=attrgetter('score'), reverse=True)
     for sub in hitSubs:
-        html += "<li><b>[" + str(sub.score) + "] </b> | <a href=\"" + sub.short_link + "\">[Comments]</a> | <a href=\"" + sub.url + "\">" + sub.title + "</a></li>\n"
+        html += "<li><b>[" + str(sub.score) + "] </b> <a href=\"" + sub.short_link + "\">[Comments]</a> | <a href=\"" + sub.url + "\">" + sub.title + "</a></li>\n"
     html +="</ol><br>"
     if len(hitSubs) == 0:
         return ""
