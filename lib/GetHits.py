@@ -7,9 +7,13 @@ from pprint import pprint
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 from operator import attrgetter
-from SubredditHits import getHits 
+from lib.SubredditHits import getHits 
 import datetime
 import sys
+import warnings
+import cred
+
+warnings.simplefilter("ignore", ResourceWarning)
 
 sys.dont_write_bytecode = True
 
@@ -20,7 +24,7 @@ def getAllHits(subreddits, toAddress):
     today = datetime.date.today()
     msg = MIMEMultipart('alternative')
     msg['Subject'] = "Reddit Hits of the Day - " + str(today)
-    msg['From'] = "RedditAggregator@Zack.com"
+    msg['From'] = cred.username()
     msg['To'] = address
 
     html =  """\
@@ -33,7 +37,6 @@ def getAllHits(subreddits, toAddress):
     user_agent = "WoahDude Aggregator 1.0 by /u/WoahDudeFanatic"
     r = praw.Reddit(user_agent=user_agent)
     r.login("WoahDudeFanatic", "funny:ears")
-    print ("") 
 
     progress = 1
     for sub in subreddits:
@@ -46,7 +49,8 @@ def getAllHits(subreddits, toAddress):
 
     text = "plain text"
     try:
-        html = unicodedata.normalize('NFKD', html).encode('ascii','ignore')
+        #html = unicodedata.normalize('NFKD', html).encode('ascii','ignore')
+        html.encode('ascii')
     except:
         pass
 # Record the MIME types of both parts - text/plain and text/html.
@@ -67,4 +71,4 @@ def getAllHits(subreddits, toAddress):
     finally:
         s.quit()
 
-    print "Done!"
+    print ("Done!")

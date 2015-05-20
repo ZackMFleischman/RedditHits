@@ -1,5 +1,5 @@
 # Rename as cred.py and put in credentials for gmail account locally
-def getUsername():
+def username():
     return "gmail@gmail.com"
-def getPassword():
+def password():
     return "password"
