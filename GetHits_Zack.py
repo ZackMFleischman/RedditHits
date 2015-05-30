@@ -17,8 +17,6 @@ subreddits = [
 "explainlikeimfive",
 "til",
 "wtf",
-"nsfw",
-"gonewild",
 "morbidreality"
 ]
 
