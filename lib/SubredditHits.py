@@ -37,6 +37,6 @@ def getHits(r, subreddit_name, score_threshold=100):
             nsfw = "(NSFW)"
         html += "<li><b>[" + str(sub.score) + "] </b>" + nsfw + " <a href=\"" + sub.short_link + "\">[Comments]</a> | <a href=\"" + sub.url + "\">" + sub.title + "</a></li>\n"
     html +="</ol><br>"
-    if len(hitSubs) == 0:
+    if len(recordedSubs) == 0:
         return ""
     return html
