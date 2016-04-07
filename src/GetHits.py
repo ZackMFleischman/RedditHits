@@ -47,6 +47,15 @@ def getAllHits(subreddits, toAddress):
 
     html += "</ol></body></html>\n"
 
+
+    print(html)
+    try:
+        f = open('/Users/zfleischman/repos/RedditHits/digest.html', 'w+')
+        f.write(html)
+        f.close()
+    except:
+        print ("Couldn't open digest.html file")
+
     text = "plain text"
     try:
         #html = unicodedata.normalize('NFKD', html).encode('ascii','ignore')
