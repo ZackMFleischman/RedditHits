@@ -7,7 +7,7 @@ from pprint import pprint
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 from operator import attrgetter
-from lib.SubredditHits import getHits 
+from src.SubredditHits import getHits
 import datetime
 import sys
 import warnings
