@@ -2,11 +2,11 @@
 Script to aggregate the daily top scoring posts for certain subreddits.
 
 ## Setup
-####Dependencies
+#### Dependencies
 - **praw**
 ```pip install praw```
 
-####Credentials
+#### Credentials
 ```
 cp cred_template.py cred.py
 ```
